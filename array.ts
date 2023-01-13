@@ -1,4 +1,4 @@
-class array_db<T> {
+export class array_db<T> {
 
     public array:  Array<number> = [];
 

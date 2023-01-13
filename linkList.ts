@@ -14,7 +14,7 @@ class LinkedNode<T> {
 }
 
 
-class LinkedList<T> {
+export class LinkedList<T> {
 
     public head: LinkedNode<T> | null = null;
 
@@ -97,7 +97,7 @@ class LinkedList<T> {
       } 
     }
 
-    public insert(data: number): void 
+    public insert_after_sort(data: number): void 
     {
 
       let node:  LinkedNode<T> | null = new LinkedNode(data) ;
@@ -177,7 +177,7 @@ console.log("");
 console.log("");
 console.log("");
 
-linkedList.insert(5)
+linkedList. insert_after_sort(5)
 
 if (linkedList.head) {
   linkedList.print(linkedList.head)
