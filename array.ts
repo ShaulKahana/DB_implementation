@@ -24,20 +24,20 @@ export class array_db<T> {
       return this.array;
     }
     
-    public binarySearch(target: number) {
+    public binarySearch(target: number): boolean {
         let left = 0;
         let right = this.array.length - 1;
         while (left <= right) {
             let mid = Math.floor((left + right) / 2);
             if (this.array[mid] === target) {
-                return mid;
+                return true;
             } else if (this.array[mid] < target) {
                 left = mid + 1;
             } else {
                 right = mid - 1;
             }
         }
-        return -1;
+        return false;
     }
 }
 
@@ -45,27 +45,73 @@ export class array_db<T> {
 const arrayList = new array_db<Number>();
 
 
-for (let index = 0; arrayList.array.length < 4; index++) {
-    let a = Math.floor(Math.random() * 4) + 1;
-    if (!arrayList.search(a))
-    {
-      arrayList.array.push(a)
-    }
+
+export function array_meneger(action: string, data: number): void{
+
+  let temp = false;
+
+  switch (action) {
+
+      case "search before sort":
+        temp = arrayList.search(data)
+        if (temp) 
+          console.log(`${data} is in the array`)
+        else
+          console.log(`${data} is not in array`)
+
+      case "search after sort":
+        arrayList.sortArray()
+        console.log(`The Array sorted successfully`)
+        temp = arrayList.binarySearch(data)
+        
+        if (temp) 
+          console.log(`the ${data} is in the array ${temp}`)
+        else
+          console.log(`the ${data} is not in array`)
+
+        break;
+  }
 }
 
-for (let index = 0; index <arrayList.array.length; index++) {
-  console.log(arrayList.array[index])
+export function fill_array():void{
+  for (let index = 0;index < 50000; index++) {
+      arrayList.array.push(Math.floor(Math.random() * 50000) + 1)
+  }
 }
 
-console.log(arrayList.search(2))
-console.log(arrayList.search(5))
+
+//אפשר להריץ את הפקודות למטה אם רוצים לראות אם זה עובד באמת תודה
+
+// for (let index = 0; arrayList.array.length < 5; index++) {
+//   let a = Math.floor(Math.random() * 5) + 1;
+//   if (!arrayList.search(a))
+//   {
+//     arrayList.array.push(a)
+//   }
+// }
+
+// for (let index = 0; index <arrayList.array.length; index++) {
+//   console.log(arrayList.array[index])
+// }
+
+// console.log()
+// console.log()
+// console.log(arrayList.search(2))
+// console.log()
+// console.log(arrayList.search(6))
+// console.log()
+// console.log()
 
 
-arrayList.sortArray()
 
-for (let index = 0; index <arrayList.array.length; index++) {
-  console.log(arrayList.array[index])
-}
+// arrayList.sortArray()
 
-console.log(arrayList.search(2))
-console.log(arrayList.search(5))
+// for (let index = 0; index <arrayList.array.length; index++) {
+//   console.log(arrayList.array[index])
+// }
+// console.log()
+
+
+// console.log(arrayList.binarySearch(2))
+// console.log()
+// console.log(arrayList.binarySearch(6))
